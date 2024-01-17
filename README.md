@@ -74,6 +74,15 @@ Finally, you can run the following script to get results of downstream experimen
 python stats_aggregation.py --base_dir ${OUTPUT_DIR}/todo_audioset --output_dir ${OUTPUT_DIR}/parsed_results
 ```
 
+
+## RESULTS
+The pretrained model provided gets the following results on the downstream tasks.
+
+| Config=MW-MAE-B-4x16-4l   | Beijing-Opera   | CREMA-D   | ESC-50   | LibriCount   | Mridangam-S   | Mridangam-T   | NSynth-Pitch-5h   | SpeechCommands-5h   | FSD50k   | VoxLingua   |
+|:--------------------------------|:----------------|:----------|:---------|:-------------|:--------------|:--------------|:------------------|:--------------------|:---------|:------------|
+| Paper | 96.0±0.5        | 73.1±0.3  | 81.2±0.4 | 68.8±0.2     | 97.4±0.1      | 97.9±0.1      | 69.3±0.6          | 90.9±0.2            | 51.2±0.2 | 44.2±0.9    |
+| Provided Weights    | 96.3±0.3        | 73.5±0.1  | 81.6±0.4 | 68.8±0.4     | 97.4±0.1      | 97.9±0.1      | 69.2±0.5          | 90.9±0.3            | 51.3±0.1 | 43.9±0.7    |
+
 ---
 
 # Extracting features on your own audio file
@@ -81,7 +90,6 @@ The [hear_api](hear_api) can be used to extract features from your own audio fil
 
 ```python
 import torchaudio
-
 
 from hear_api import RuntimeMAE
 from importlib import import_module

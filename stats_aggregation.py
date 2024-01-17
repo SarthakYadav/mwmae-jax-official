@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import argparse
 import json
+from scipy import stats as st
 
 
 def parse(f):
@@ -48,9 +49,11 @@ def get_info(f):
     # return exp, ssl_run_id, runid, dataset
 
 
-def get_stats(values):
-    mean = np.mean(values)
-    return np.mean(values), np.std(values)
+def get_stats(x, conf=0.95):
+    l, h = st.t.interval(conf, len(x)-1, loc=np.mean(x), scale=st.sem(x))
+    s = (h - l) / 2
+    m = h - s
+    return m, s
 
 
 def get_overall_stats(df, exp, ssl_run=None, run=None, dataset=None):
