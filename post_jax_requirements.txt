@@ -1,0 +1,6 @@
+ml-collections==0.1.1
+clu==0.0.10
+flax==0.7.2
+chex==0.1.82
+optax==0.1.7
+orbax-checkpoint==0.3.2

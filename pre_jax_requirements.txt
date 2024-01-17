@@ -1,0 +1,10 @@
+numpy
+scipy
+tensorflow>=2.12.1
+tqdm
+pandas
+tensorflow-datasets
+tensorflow-io==0.32.0
+einops==0.7.0
+einsum==0.3.0
+protobuf<=3.20.1
