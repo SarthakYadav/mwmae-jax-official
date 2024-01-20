@@ -10,10 +10,6 @@ def get_config():
     config.model.arch = "mae_base"
     config.model.type = "mae"
     config.model.num_classes = 1000     # needed for dataset parsing. Is not used.
-    # config.model.img_size = 40000
-    # config.model.patch_size = 16
-    # config.model.in_chans = 1
-    # config.model.embed_dim = 768
     config.model.model_args = {
         "mask_ratio": 0.8,
         "img_size": (200, 80),
@@ -32,11 +28,6 @@ def get_config():
     config.opt.warmup_epochs = 10
     config.opt.momentum = 0.9
     config.opt.norm_pix_loss = False
-    # config.opt.grad_accum_steps = 1
-    # config.opt.agc_clip_val = 0.01
-    # config.opt.opt_func = "mae_infoNCE"
-    # config.opt.contrastive_temp = 0.1
-    # config.opt.alpha = 1.
 
     config.log_every_steps = 100
     config.num_train_steps = -1
@@ -55,8 +46,6 @@ def get_config():
     config.data.tr_samples = 2032320
     config.data.eval_manifest = os.path.join(DATASETS_DIR, "audioset_logmelspec/meta/eval.csv")
     config.data.eval_samples = 17408
-    # config.data.mean_stats = "/home/sarthak/my_disk/Datasets/audioset_logmelspec/mean.npy"
-    # config.data.std_stats = "/home/sarthak/my_disk/Datasets/audioset_logmelspec/std.npy"
     config.data.compression = "ZLIB"
     config.data.reader = "spec"
     config.data.cacheable = False

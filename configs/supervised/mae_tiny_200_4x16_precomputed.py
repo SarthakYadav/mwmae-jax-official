@@ -51,14 +51,10 @@ def get_config():
     config.audio_config.timesteps = 200
 
     config.data = ml_collections.ConfigDict()
-    # config.data.tr_manifest = "/home/sarthak/my_disk/Datasets/audioset_logmelspec/unbalanced_full.csv"
-    # config.data.tr_samples = 2032320
     config.data.tr_manifest = "/Users/sarthak/Datasets/audioset_logmelspec/meta/balanced.csv"
     config.data.eval_manifest = "/Users/sarthak/Datasets/audioset_logmelspec/meta/eval.csv"
     config.data.tr_samples = 320
     config.data.eval_samples = 320
-    # config.data.mean_stats = "/home/sarthak/my_disk/Datasets/audioset_logmelspec/mean.npy"
-    # config.data.std_stats = "/home/sarthak/my_disk/Datasets/audioset_logmelspec/std.npy"
     config.data.compression = "ZLIB"
     config.data.reader = "spec"
     config.data.cacheable = False
