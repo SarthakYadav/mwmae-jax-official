@@ -4,6 +4,7 @@ import wandb
 import jax
 import jax.numpy as jnp
 import functools
+import tensorflow as tf
 from clu import metric_writers
 from clu import periodic_actions
 from flax.training.common_utils import get_metrics
@@ -19,7 +20,10 @@ import logging
 
 class Trainer(object):
     def __init__(self, config, workdir, no_wandb, seed=0, inference=False):
-        if not no_wandb:
+        self.NUM_PROCESSES = jax.process_count()
+        self.DEVICE_COUNT = jax.device_count()
+        self.WORKER_ID = jax.process_index()
+        if not no_wandb and self.WORKER_ID == 0:
             self.wandb_logger = wandb.init(
                 project='{}'.format(config.wandb.get("project", "audax-supervised")),
                 group="{}".format(config.data.dataset_name),
@@ -27,9 +31,7 @@ class Trainer(object):
                 name=workdir.split("/")[-1])
         else:
             self.wandb_logger = None
-        self.NUM_PROCESSES = jax.process_count()
-        self.DEVICE_COUNT = jax.device_count()
-        self.WORKER_ID = jax.process_index()
+        tf.io.gfile.makedirs(workdir)
         self.writer = metric_writers.create_default_writer(logdir=workdir, just_logging=jax.process_index() != 0)
         utilities.write_config_to_json(workdir, config)
         self.rng = jax.random.PRNGKey(seed)
@@ -58,7 +60,7 @@ class Trainer(object):
                 dtype=self.input_dtype,
                 mean=mean, std=std
             ),
-            axis_name='batch', devices=self.local_devices
+            axis_name='batch'
         )
         self.config = config
         self.workdir = workdir

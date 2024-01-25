@@ -85,7 +85,7 @@ class TrainState_v2(struct.PyTreeNode):
     def update_rng_keys(self):
         unfrozen = flax.core.unfreeze(self.aux_rng_keys)
         for k in self.aux_rng_keys.keys():
-            unfrozen[k] = jax.random.split(unfrozen[k], 1)[0]
+            unfrozen[k] = jax.random.fold_in(unfrozen[k], self.step)
         return flax.core.freeze(unfrozen)
 
     @property

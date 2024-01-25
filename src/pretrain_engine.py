@@ -29,7 +29,7 @@ def train_step(state,
     if dynamic_scale:
         grad_fn = dynamic_scale.value_and_grad(loss_fn, has_aux=True, axis_name='batch')
         dynamic_scale, is_fin, aux, grads = grad_fn(state.params)
-        grads = jax.lax.pmean(grads, axis_name='batch')
+        # grads = jax.lax.pmean(grads, axis_name='batch')   not needed as dynamic_scale already does it
     else:
         grad_fn = jax.value_and_grad(loss_fn, has_aux=True, allow_int=True)
         aux, grads = grad_fn(state.params)

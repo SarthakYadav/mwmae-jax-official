@@ -15,8 +15,9 @@ This is the official repository for the paper ["Masked Autoencoders with Multi-W
 ## Environment
 * Required: cuda 11.x, cudnn 8.2 or newer.
 * create a new conda environment with python 3.9
-* Setting up `jax==0.4.18`. We used jax because we wanted a framework that worked seemlessly across GPUs and TPUs, and since most of the experiments were done on a TPU.
+* Setting up `jax==0.4.18`. We used jax because we wanted a framework that worked seemlessly across GPUs and TPUs, and since majority of the pre-training experiments were done on a TPU.
 * You need `torch` to run downstream experiments (hear-eval-kit is based on torch)
+
 
 Follow these steps
 ```shell
@@ -39,6 +40,9 @@ pip install --upgrade "jax[cuda]==0.4.18" -f https://storage.googleapis.com/jax-
 pip install -r post_jax_requirements.txt
 
 ```
+
+**ATTENTION:** Our results were obtained by pretraining on TPU-v3 devices followed by running downstream experiments on a GPU (as mentioned in the paper). Jax is more deterministic on TPUs, by virtue of both hardware and software, whereas achieving deterministic behaviour on GPUs is a lot more involved ([example](https://github.com/google/jax/discussions/10674)). We provide the code as is, which does not include steps/directions to achieve fully deterministic behaviour on GPUs.
+
 
 ## Get 16000 Hz data from hear
 * Follow https://hearbenchmark.com/hear-tasks.html to get data. By default, data on HEAR's zenodo page is 48000 Hz.

@@ -115,7 +115,9 @@ if __name__ == "__main__":
         os.makedirs(out_dir, exist_ok=True)
         for uq_ds in unique_datasets:
             mean, std, subdf = get_overall_stats(df, uq_exp, dataset=uq_ds)
-            # print("\t", uq_exp, uq_ds, mean, std)
+            if len(subdf) == 0:
+                print("NO DATA FOR ", uq_exp, uq_ds)
+                continue
             all_scores = subdf.scores.values
             scores_txt = os.path.join(out_dir, f"{dset_map[uq_ds]}_scores.txt")
             stats_txt = os.path.join(out_dir, f"{dset_map[uq_ds]}_stats.txt")
