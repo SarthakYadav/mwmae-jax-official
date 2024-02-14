@@ -1,6 +1,15 @@
 # mwmae-jax-official
-This is the official repository for the paper ["Masked Autoencoders with Multi-Window Local-Global Attention Are Better Audio Learners"](https://arxiv.org/abs/2306.00561), to appear at the Twelfth International Conference on Learning Representations (ICLR) 2024.
+This is the official repository for the paper ["Masked Autoencoders with Multi-Window Local-Global Attention Are Better Audio Learners"](https://openreview.net/pdf?id=Q53QLftNkA), published at the Twelfth International Conference on Learning Representations (ICLR), 2024.
 
+```
+@inproceedings{yadav2024masked,
+  title={Masked Autoencoders with Multi-Window Local-Global Attention Are Better Audio Learners},
+  author={Sarthak Yadav and Sergios Theodoridis and Lars Kai Hansen and Zheng-Hua Tan},
+  booktitle={The Twelfth International Conference on Learning Representations},
+  year={2024},
+  url={https://openreview.net/forum?id=Q53QLftNkA}
+}
+```
 
 # Contents
 * [Pre-trained weights for the default configurations](https://drive.google.com/drive/folders/1tM723MLFJRaWVmLVjE49pJ0Yi3lpMZHV?usp=sharing)
@@ -120,3 +129,4 @@ python main.py --config configs/pretraining/mwmae_base_200_4x16_precomputed.py -
 ```
 
 ---
+
