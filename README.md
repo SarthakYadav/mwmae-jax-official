@@ -12,6 +12,7 @@ This is the official repository for the paper ["Masked Autoencoders with Multi-W
 ```
 
 # Contents
+* UPDATE: Added MWMAE-Tiny-4x16 and MWMAE-Base-5x5 pretrained weights/configs.
 * [Pre-trained weights for the default configurations](https://drive.google.com/drive/folders/1tM723MLFJRaWVmLVjE49pJ0Yi3lpMZHV?usp=sharing)
 * Our local copy of [hear-eval-kit](external_sources/hear-eval-kit) for easy downstream reproducibility. Original can be found [here](https://github.com/hearbenchmark/hear-eval-kit)
 * [Feature extraction API](hear_api) compatible with the [hear-eval-kit](https://github.com/hearbenchmark/hear-eval-kit) format for extracting features.
@@ -35,9 +36,6 @@ conda activate mwmae-env
 
 # install pre jax requirments
 pip install -r pre_jax_requirements.txt
-
-# install hear-eval-kit specific requirements
-pip install -r hear-eval-kit/requirements.txt
 
 # install hear-eval-kit, WITHOUT AUTO DEPS
 cd external_sources/hear-eval-kit && pip install --no-deps . && cd -
